@@ -8,7 +8,7 @@ media
 
 # Backup files #
 *.bak
-
+**/*.cnf
 # If you are using PyCharm #
 .idea/
 .idea/**/workspace.xml
