@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <title>Title</title>
+    <link rel="stylesheet" href="./static/css/register.css">
+</head>
+<body>
+<div id="root">
+<div>用户注册</div>
+    Counter: <span v-text="counter"></span>
+    <todo-item :todo="item"></todo-item>
+</div>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+const app = Vue.createApp({
+    data() {
+        return {
+            counter: 0,
+            item: {
+                text: '数控刀具返回空'
+            }
+        }
+    }
+})
+app.component('todo-item', {
+    props: ['todo'],
+    data() {
+        return {
+            text: '束带结发开始的'
+        }
+    },
+    mounted() {
+        console.log(this.text)
+    },
+    template: `<li v-text="todo.text"></li>`
+})
+app.mount('#root')
+</script>
+</body>
+</html>
