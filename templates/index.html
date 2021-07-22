@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>M5大数据</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+</head>
+
+<body>
+<div id="root" style="background: #f7f7f7">
+    <nav-bar></nav-bar>
+    <div class="banner">
+        <div class="slogo">M5 · 专业大乐透大数据分析</div>
+        <div class="slogo_en">Professional Big Lotto Big Data Analysis</div>
+        <div class="drawResult">第{{ newestLottery.lotteryDrawNum }}期 -
+            {% for i in newestLottery.lotteryDrawResult|red_ball%}
+                <ball :num="{{ i }}"></ball>
+            {% endfor %}
+            {% for i in newestLottery.lotteryDrawResult|blue_ball%}
+                <ball :num="{{ i }}" :color="'#409EFF'"></ball>
+            {% endfor %}
+{#            <div style="letter-spacing: 0px;align-items: flex-end">详细 >></div>#}
+        </div>
+        <div class="drawResult">
+            <div class="btn-main">智能分析</div>
+            <div style="width: 10px"></div>
+            <div class="btn-main btn-main1">荐号</div>
+        </div>
+        <div class="banner-tip1">购彩有节制，请理性投注</div>
+        <div style="height: 80px"></div>
+    </div>
+    <div class="bd">
+        <div class="bd-line">
+            <div class="bd-item">
+                <i class="iconfont icon">&#xe628;</i>
+                前区走势
+            </div>
+            <div class="bd-item">
+                <i class="iconfont icon">&#xe627;</i>
+                后区走势
+            </div>
+            <div class="bd-item">
+                <i class="iconfont icon">&#xe642;</i>
+                单期数据
+            </div>
+            <div class="bd-item">
+                <i class="iconfont icon">&#xe60c;</i>
+                开放平台
+            </div>
+        </div>
+        <div class="bd-line">
+            <div class="bd-item">
+                 <i class="iconfont icon">&#xe63f;</i>
+                开发合作
+            </div>
+            <div class="bd-item">
+                <i class="iconfont icon">&#xe686;</i>
+                荐号历史
+            </div>
+            <div class="bd-item">
+                <i class="iconfont icon">&#xe641;</i>
+                统计学和概率论
+            </div>
+            <div class="bd-item">
+                <i class="iconfont icon">&#xe89e;</i>
+                图表分析
+            </div>
+        </div>
+    </div>
+    <foot></foot>
+</div>
+<script src="https://unpkg.com/vue@next"></script>
+<script src="https://unpkg.com/element-plus/lib/index.full.js"></script>
+<script src="static/js/components/nav.js"></script>
+<script src="static/js/components/ball.js"></script>
+<script src="static/js/components/foot.js"></script>
+<script>
+    const app = Vue.createApp({})
+    app.use(ElementPlus);
+    app.component('nav-bar', nav)
+    app.component('ball', ball)
+    app.component('foot', foot)
+    app.mount('#root')
+</script>
+</body>
+</html>

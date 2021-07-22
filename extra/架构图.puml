@@ -1,0 +1,96 @@
+@startuml
+left to right direction
+actor client [
+客户端
+]
+node nginx [
+    <b>nginx
+    <b>代理服务器
+]
+node staticFile[
+    静态文件
+]
+
+node uwsgi[
+    uwsgi服务器
+]
+
+node django [
+    Django框架
+]
+node staticList [
+    首页
+    ===
+    商品详情页
+    ===
+    css
+    ===
+    js
+    ===
+    images
+]
+node DjangoFnList [
+    验证
+    ===
+    用户
+    ===
+    第三方登陆
+    ===
+    商品列表和搜索
+    ===
+    购物车
+    ===
+    订单
+    ===
+    支付
+    ===
+    前后分离的管理后台（mis）
+]
+
+node service [
+    后端服务
+]
+node jinja [
+    jinja模板
+]
+node threedInterface [
+    外部接口
+]
+
+node serviceList [
+    数据存储 mysql
+    ===
+    缓存服务redis
+    ===
+    异步服务celery
+    ===
+    消息队列RabittMQ
+    ===
+    文件存储服务FastDFS
+    ===
+    全文检索Elasticsearch
+    ===
+    部署nginx+uwsgi
+    ===
+    定时服务crontab
+]
+node threedInterfaceList [
+    验证码相关
+    ===
+    OAuth2.0认证
+    ===
+    第三方支付
+]
+
+client -- nginx
+nginx -- staticFile
+nginx -- uwsgi
+staticFile -- staticList
+uwsgi -- django
+django -- DjangoFnList
+django ~~~ service
+django ~~~ jinja
+django ~~~ threedInterface
+service --- serviceList
+threedInterface --- threedInterfaceList
+@enduml
