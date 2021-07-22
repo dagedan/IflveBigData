@@ -1,0 +1,78 @@
+@import "_main.scss";
+@import "comp.scss";
+.el-carousel__item h3 {
+  color: #475669;
+  font-size: 14px;
+  opacity: 0.75;
+  line-height: 450px;
+  margin: 0;
+}
+.banner {
+  position: relative;
+  background-color: #303133;
+  //height: 550px;
+  text-align: center;
+  display: block;
+  color:#fff;
+  padding-top: 50px;
+  overflow: hidden;
+  .slogo{
+    font-size: 40px;
+    line-height: 30px;
+    letter-spacing: 8px;
+  }
+  .slogo_en{
+    margin-top: 15px;
+    letter-spacing: 7px;
+    color: #6e7786;
+  }
+  .drawNum{
+    margin-top: 50px;
+  }
+  .drawResult {
+    margin-top: 50px;
+    letter-spacing: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+  .banner-tip1{
+    position: absolute;
+    left: 20px;
+    bottom: 0;
+    line-height: 35px;
+    color: #909399;
+    text-align: center;
+    font-size: 12px;
+  }
+.bd{
+  width: 1000px;
+  margin: auto;
+  text-align: center;
+  margin-top: 50px;
+}
+.bd-line{
+  display: flex;
+}
+.bd-item{
+  display: flex;
+  flex:1;
+  height:200px;
+  margin: 30px 20px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 8px;
+  background-color: #fff;
+  color: rgba(0,0,0,0.9);
+  font-size: 17px;
+  transition: transform .3s;
+  color:#303133;
+  cursor: pointer;
+  letter-spacing: 3px;
+}
+.bd-item:hover{
+  transform: scale(1.03);
+  color:#2f86f6
+}

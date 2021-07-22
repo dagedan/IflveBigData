@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
-    <title>登录</title>
+    <title>M5大数据-平台注册</title>
     <link rel="stylesheet" href="https://unpkg.com/element-plus/lib/theme-chalk/index.css">
     <link rel="stylesheet" href="./static/css/register.css">
 </head>
 <body>
 <div id="root" v-cloak>
-    <div class="nav">
-        <img src="./static/images/logo.png">
-    </div>
+    <nav-bar></nav-bar>
     <div class="wrapper_lr" v-cloak>
+        <img style="height: 400px;margin: 50px" src="/static/images/banner.png"/>
         <div class="lr_wrapper_panel">
             <el-card class="input_container" shadow="always">
                 <el-divider>新用户注册</el-divider>
                 <br>
                 <el-form :rules="rules" ref="form" label-position="right" label-width="80px" :model="form" class="form-x">
                     <el-form-item label="手机号码" prop="mobile">
-                        <el-input maxlength="11" clearable v-model="form.mobile" placeholder="只支持中国大陆的手机号码" @blur="toValidateMobile"></el-input>
-                        <i class="el-icon-circle-check check_user" v-show="checkUserVisible"></i>
+                        <el-input maxlength="11" clearable v-model="form.mobile" placeholder="只支持中国大陆的手机号码"></el-input>
+                        <i class="el-icon-circle-check check_user" v-show="checkSuccess"></i>
                     </el-form-item>
                     <el-form-item label="密码" prop="password">
                         <el-input maxlength="20" clearable type="password" show-password v-model="form.password" autocomplete="off" placeholder="6~16位数字/字母/下划线组成"></el-input>
@@ -28,21 +27,28 @@
                     <el-form-item label="确认密码" prop="repeatPassword">
                         <el-input maxlength="20" clearable type="password" show-password v-model="form.repeatPassword" autocomplete="off" placeholder="重复输入密码校验"></el-input>
                     </el-form-item>
+
+                    <el-form-item label="验证码" prop="validCode">
+                        <div style="display: flex;align-items: center;">
+                            <el-input maxlength="4" type="text" v-model="form.validCode" autocomplete="off" placeholder="验证码"></el-input>
+                            <img class="validCodeImg" :src="validCodeUrl" @click="refreshValidCode">
+                        </div>
+                    </el-form-item>
                     <el-form-item label="邀请码" prop="invitationCode">
                         <div style="display: flex">
-                            <el-input maxlength="4" type="text" v-model="form.invitationCode" autocomplete="off" placeholder="可不填"></el-input>
-                            <el-button size="mini" type="info" icon="el-icon-question" style="margin-left: 15px" @click="qrShow=true">没有邀请码？</el-button>
+                            <el-input maxlength="4" type="text" v-model="form.invitationCode" autocomplete="off" placeholder="如没有可不填"></el-input>
+                            <el-button size="mini" type="info" icon="el-icon-question" style="margin-left: 10px" @click="qrShow=true">没有邀请码？</el-button>
                         </div>
-                     </el-form-item>
+                    </el-form-item>
                     <el-form-item label="">
                         <el-button type="submit" class="btn el-button--primary" @click="submit('form')">注册</el-button>
-                        <el-button class="btn">返回登陆</el-button>
+                        <el-button class="btn" @click="toLoginPage">返回登陆</el-button>
                     </el-form-item>
                 </el-form>
             </el-card>
         </div>
     </div>
-    <div class="footer"></div>
+    <foot></foot>
     <el-dialog title="" v-model="qrShow" width="40%" center v-cloak>
         <div style="text-align: center">
             <p style="margin: 30px 0">
@@ -60,7 +66,11 @@
 <script src="https://unpkg.com/vue@next"></script>
 <script src="https://unpkg.com/element-plus/lib/index.full.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/js-cookie/2.2.1/js.cookie.min.js"></script>
+<script src="static/js/common.js"></script>
+<script src="static/js/components/nav.js"></script>
+<script src="static/js/components/foot.js"></script>
+
 <script>
 const csrftoken = Cookies.get('csrftoken');
 const app = Vue.createApp({
@@ -68,7 +78,17 @@ const app = Vue.createApp({
     data() {
         const validateMobile = (rule, value, callback) => {
             if (/^1[3-9]\d{9}$/.test(value)) {
-                callback();
+                axios.get(`/user/${this.form.mobile}/count`,{
+                    responseType: 'application/json'
+                }).then(
+                    res => {
+                        if(!res.data.data) {
+                            callback();
+                        } else {
+                            callback('该手机号已被注册');
+                        }
+                    }
+                ).catch(err => callback(new Error('手机号验证失败')))
             } else {
                 callback(new Error('目前只支持中国大陆的11位手机号码'));
             }
@@ -92,15 +112,33 @@ const app = Vue.createApp({
                 callback()
             }
         };
+        const validateValidCode = (rule, value, callback) => {
+            if (value === '') {
+                callback(new Error('请输入验证码'))
+            }  else {
+                axios.post(`/verifications/${this.uuid}`, {code: value}).then(res => {
+                    console.log(res.data.success)
+                    if(res.data.success) {
+                        callback()
+                    } else {
+                        callback(new Error('验证码错误'))
+                    }
+                }).catch(err => callback(new Error('验证码错误')))
+            }
+        };
         return {
             counter: 0,
             qrShow: false,
-            checkUserVisible: false,
+            checkSuccess: false,
+            checkFailure: false,
+            validCodeUrl: '',
+            uuid: '',
             form: {
-                mobile: '18787127435',
-                password: '123123',
-                repeatPassword: '123123',
-                invitationCode: ''
+                mobile: '',
+                password: '',
+                repeatPassword: '',
+                validCode: '',
+                invitationCode: '',
             },
             rules: {
                 mobile: [
@@ -112,10 +150,16 @@ const app = Vue.createApp({
                 repeatPassword: [
                     { validator: validateRepeatPassword, trigger: 'blur' }
                 ],
+                validCode: [
+                    { validator: validateValidCode, trigger: 'blur' }
+                ],
             }
         }
     },
-    mounted(){},
+    mounted(){
+        this.refreshValidCode()
+    },
+
     methods: {
         submit(formName) {
             this.$refs[formName].validate((valid) => {
@@ -125,9 +169,11 @@ const app = Vue.createApp({
                     formData.append('password', this.form.password)
                     formData.append('repeatPassword', this.form.repeatPassword)
                     formData.append('invitationCode', this.form.invitationCode)
-                    axios.post('/register', formData, { headers: {"Content-Type": "application/x-www-form-urlencoded",'X-CSRFToken': csrftoken}}).then(
+                    axios.post('/signup', formData, { headers: {"Content-Type": "application/x-www-form-urlencoded",'X-CSRFToken': csrftoken}}).then(
                         res => {
-                            {#console.log(res)#}
+                            if(res.data.success) {
+                                location.href = '/'
+                            }
                         }
                     )
                 } else {
@@ -135,21 +181,18 @@ const app = Vue.createApp({
                 }
             });
         },
-        toValidateMobile (){
-            {#checkUserVisible#}
-             if (/^1[3-9]\d{9}$/.test(this.form.mobile)) {
-                axios.get(`/users/usernames/${this.form.mobile}/count`,{
-                    responseType: 'application/json'
-                }).then(
-                    res => {
-                        console.log(res)
-                    }
-                )
-             }
-        }
+        refreshValidCode () {
+            this.uuid = generateUUID()
+            this.validCodeUrl = '/verifications/' + this.uuid
+        },
+        toLoginPage () {
+            location.href='/login'
+        },
     }
 })
 app.use(ElementPlus);
+app.component('nav-bar', nav)
+app.component('foot', foot)
 app.mount('#root')
 </script>
 </body>

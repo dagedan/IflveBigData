@@ -1,0 +1,2 @@
+# 验证码有效时间300秒
+IMAGE_CODE_REDIS_EXPIRSE = 300

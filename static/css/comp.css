@@ -6,8 +6,11 @@ html, body {
   padding: 0;
   margin: 0;
   width: 100%;
-  height: 100%;
   font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif; }
+
+::-webkit-scrollbar {
+  height: 0 !important;
+  width: 0px !important; }
 
 .btn-main {
   background-image: linear-gradient(-90deg, #98c4fd, #2f86f6);
@@ -25,5 +28,29 @@ html, body {
   .btn-main:hover {
     opacity: 0.8;
     cursor: pointer; }
+
+.nav {
+  height: 70px;
+  width: 100vw;
+  background: #fff;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  cursor: pointer; }
+  .nav .logo_short {
+    width: 100px;
+    height: auto; }
+  .nav .logo_long {
+    width: 30px; }
+  .nav .split_v {
+    border-right: 2px solid #F2F6FC;
+    margin: 0px 10px;
+    height: 30%; }
+  .nav .split {
+    flex: 1; }
+
+.nav-border {
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  position: fixed; }
 
 /*# sourceMappingURL=comp.css.map */
