@@ -6,3 +6,4 @@ WORKDIR /djangocode
 COPY requirements.txt /djangocode/
 RUN pip install -r requirements.txt
 COPY . /djangocode/
+
