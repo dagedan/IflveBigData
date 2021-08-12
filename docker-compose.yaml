@@ -7,19 +7,22 @@ services:
       - .:/djangocode
     ports:
       - "80:8000"
-  # redis:
-  #   image: redis:alpine
-  #   ports:
-  #     - "6379"
-  #   networks:
-  #     - frontend
-  #   deploy:
-  #     replicas: 2
-  #     update_config:
-  #       parallelism: 2
-  #       delay: 10s
-  #     restart_policy:
-  #       condition: on-failure
+  redis:
+    image: redis:alpine
+    container_name: redis
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf:rw
+      - ./redis/data:/data:rw
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
 
   mysql:
     restart: always
