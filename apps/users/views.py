@@ -1,7 +1,5 @@
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.hashers import check_password
-from django.forms.utils import ErrorDict
-from django.http import JsonResponse, HttpResponse, HttpResponseForbidden
+from django.contrib.auth import login, authenticate, logout
+from django.http import JsonResponse, HttpResponseForbidden
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
@@ -22,7 +20,7 @@ class RegisterView(View):
 			invitationCode = request.POST.get('invitationCode')
 			try:
 				user = User.objects.create_user(username=mobile, mobile=mobile, password=password, invitationCode=invitationCode)
-			except DatabaseError as e:
+			except DatabaseError:
 				return render(request, 'register.html', {'error', '注册失败-1'})
 			login(request, user)
 			# return redirect(reverse('contents:index'))
@@ -47,6 +45,15 @@ class UsernameCountView(View):
 		pass
 
 
+class LogoutView(View):
+
+	def get(self, request):
+		logout(request)
+		response = redirect(reverse('contents:index'))
+		response.delete_cookie('username')
+		return response
+
+
 class LoginView(View):
 	"""用户登录"""
 
@@ -63,10 +70,14 @@ class LoginView(View):
 			user = authenticate(username=username, password=password)
 			if user is None:
 				return JsonResponse(data={'register_err_msg': '用户名或密码错误'}, content_type="application/json")
+			# 登陆保持
 			login(request, user)
 			# 状态保持默认为2周， 0：则关闭浏览器结束会话
-			request.session.set_expiry(None)
-			return JsonResponse(data={'success': 1, 'register_err_msg': '登陆成功'}, content_type="application/json")
+			request.session.set_expiry(3600 * 24)
+			# 为了实现首页显示用户名，需要将用户名写入cookie中
+			response = JsonResponse(data={'success': 1, 'register_err_msg': '登陆成功'}, content_type="application/json")
+			response.set_cookie(key='username', value=user.username, expires=3600 * 24)
+			return response
 		else:
 			content = {
 				'form_errors': login_form.errors

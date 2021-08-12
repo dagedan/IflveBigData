@@ -43,6 +43,26 @@
     .split{
       flex: 1;
     }
+    .c-a {
+      font-size: 12px;
+      font-weight: normal;
+      color: #909399;
+    }
+    .username{
+      position: relative
+      
+    }
+    .level-tip {
+      position: absolute;
+      right:-20px;
+      background: #F56C6C;
+      font-size:12px;
+      color: white;
+      border-radius: 5px;
+      top:-12px;
+      padding: 2px 3px;
+      transform: scale(0.6);
+    }
     cursor: pointer;
   }
   .nav-border{

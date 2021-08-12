@@ -122,6 +122,22 @@ a:hover {
     height: 30%; }
   .nav .split {
     flex: 1; }
+  .nav .c-a {
+    font-size: 12px;
+    font-weight: normal;
+    color: #909399; }
+  .nav .username {
+    position: relative; }
+  .nav .level-tip {
+    position: absolute;
+    right: -20px;
+    background: #F56C6C;
+    font-size: 12px;
+    color: white;
+    border-radius: 5px;
+    top: -12px;
+    padding: 2px 3px;
+    transform: scale(0.6); }
 
 .nav-border {
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
