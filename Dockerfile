@@ -4,6 +4,6 @@ ENV PYTHONUNBUFFERED 1
 RUN mkdir /djangocode
 WORKDIR /djangocode
 COPY requirements.txt /djangocode/
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple pyspider
 COPY . /djangocode/
 
