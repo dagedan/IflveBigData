@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-lmz%f3($vkozcrkl=##oio@-6e*wd&gsd^h_26+f^b!1i&i&fg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', '47.98.118.82', '172.24.130.171']
 
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 

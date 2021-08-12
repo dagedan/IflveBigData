@@ -1,0 +1,101 @@
+*** Starting uWSGI 2.0.19.1 (64bit) on [Thu Aug 12 15:32:18 2021] ***
+compiled with version: Apple LLVM 12.0.5 (clang-1205.0.22.6) on 12 August 2021 07:12:54
+os: Darwin-20.3.0 Darwin Kernel Version 20.3.0: Thu Jan 21 00:07:06 PST 2021; root:xnu-7195.81.3~1/RELEASE_X86_64
+nodename: 192.168.2.100
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 8
+current working directory: /Users/dagongzai/Documents/space/IflveBigData
+writing pidfile to /tmp/xxx.pid
+detected binary path: /Users/dagongzai/Documents/space/IflveBigData/venv/bin/uwsgi
+your processes number limit is 2784
+your memory page size is 4096 bytes
+detected max file descriptor number: 10240
+lock engine: OSX spinlocks
+thunder lock: disabled (you can enable it with --thunder-lock)
+uWSGI http bound on :8000 fd 4
+uwsgi socket 0 bound to TCP address 127.0.0.1:50455 (port auto-assigned) fd 3
+Python version: 3.9.5 (default, Jul 22 2021, 15:42:01)  [Clang 12.0.5 (clang-1205.0.22.6)]
+Python main interpreter initialized at 0x7fb806005900
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 416640 bytes (406 KB) for 8 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x7fb806005900 pid: 85204 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 85204)
+spawned uWSGI worker 1 (pid: 85228, cores: 2)
+spawned uWSGI worker 2 (pid: 85229, cores: 2)
+spawned uWSGI worker 3 (pid: 85230, cores: 2)
+spawned uWSGI worker 4 (pid: 85231, cores: 2)
+spawned uWSGI http 1 (pid: 85232)
+超级大乐透
+['01', '12', '15', '26', '35', '10', '11']
+[pid: 85231|app: 0|req: 1/1] 127.0.0.1 () {50 vars in 935 bytes} [Thu Aug 12 15:32:44 2021] GET / => generated 3161 bytes in 294 msecs (HTTP/1.1 200) 5 headers in 167 bytes (1 switches on core 0)
+[2021-08-12 15:32:45,302] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/ball.js
+[pid: 85231|app: 0|req: 2/2] 127.0.0.1 () {50 vars in 942 bytes} [Thu Aug 12 15:32:45 2021] GET /static/js/components/ball.js => generated 3192 bytes in 14 msecs (HTTP/1.1 404) 5 headers in 159 bytes (2 switches on core 1)
+[2021-08-12 15:32:45,416] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/nav.js
+[2021-08-12 15:32:45,420] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/css/index.css
+[pid: 85230|app: 0|req: 2/3] 127.0.0.1 () {50 vars in 939 bytes} [Thu Aug 12 15:32:45 2021] GET /static/js/components/nav.js => generated 3189 bytes in 134 msecs (HTTP/1.1 404) 5 headers in 159 bytes (2 switches on core 1)
+[pid: 85230|app: 0|req: 2/4] 127.0.0.1 () {48 vars in 869 bytes} [Thu Aug 12 15:32:45 2021] GET /static/css/index.css => generated 3168 bytes in 155 msecs (HTTP/1.1 404) 5 headers in 159 bytes (1 switches on core 0)
+[2021-08-12 15:32:45,428] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/foot.js
+[pid: 85228|app: 0|req: 1/5] 127.0.0.1 () {50 vars in 942 bytes} [Thu Aug 12 15:32:45 2021] GET /static/js/components/foot.js => generated 3192 bytes in 143 msecs (HTTP/1.1 404) 5 headers in 159 bytes (2 switches on core 0)
+[2021-08-12 15:32:47,994] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/nav.js
+[pid: 85230|app: 0|req: 3/6] 127.0.0.1 () {46 vars in 816 bytes} [Thu Aug 12 15:32:47 2021] GET /static/js/components/nav.js => generated 3189 bytes in 5 msecs (HTTP/1.1 404) 5 headers in 159 bytes (2 switches on core 1)
+[2021-08-12 15:32:48,004] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/ball.js
+[pid: 85228|app: 0|req: 2/7] 127.0.0.1 () {46 vars in 818 bytes} [Thu Aug 12 15:32:47 2021] GET /static/js/components/ball.js => generated 3192 bytes in 6 msecs (HTTP/1.1 404) 5 headers in 159 bytes (2 switches on core 1)
+[2021-08-12 15:32:48,016] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/foot.js
+[pid: 85231|app: 0|req: 3/8] 127.0.0.1 () {46 vars in 818 bytes} [Thu Aug 12 15:32:48 2021] GET /static/js/components/foot.js => generated 3192 bytes in 7 msecs (HTTP/1.1 404) 5 headers in 159 bytes (2 switches on core 0)
+超级大乐透
+['01', '12', '15', '26', '35', '10', '11']
+[pid: 85229|app: 0|req: 1/9] 127.0.0.1 () {50 vars in 943 bytes} [Thu Aug 12 15:32:55 2021] GET / => generated 3161 bytes in 204 msecs (HTTP/1.1 200) 5 headers in 167 bytes (1 switches on core 1)
+[2021-08-12 15:32:55,386] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/css/index.css
+[pid: 85230|app: 0|req: 4/10] 127.0.0.1 () {46 vars in 816 bytes} [Thu Aug 12 15:32:55 2021] GET /static/css/index.css => generated 3168 bytes in 8 msecs (HTTP/1.1 404) 5 headers in 159 bytes (1 switches on core 0)
+[2021-08-12 15:32:55,412] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/nav.js
+[pid: 85230|app: 0|req: 6/11] 127.0.0.1 () {46 vars in 816 bytes} [Thu Aug 12 15:32:55 2021] GET /static/js/components/nav.js => generated 3189 bytes in 15 msecs (HTTP/1.1 404) 5 headers in 159 bytes (1 switches on core 1)
+[2021-08-12 15:32:55,416] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/foot.js
+[2021-08-12 15:32:55,415] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/ball.js
+[pid: 85230|app: 0|req: 6/12] 127.0.0.1 () {46 vars in 818 bytes} [Thu Aug 12 15:32:55 2021] GET /static/js/components/ball.js => generated 3192 bytes in 15 msecs (HTTP/1.1 404) 5 headers in 159 bytes (2 switches on core 0)
+[pid: 85229|app: 0|req: 2/13] 127.0.0.1 () {46 vars in 818 bytes} [Thu Aug 12 15:32:55 2021] GET /static/js/components/foot.js => generated 3192 bytes in 15 msecs (HTTP/1.1 404) 5 headers in 159 bytes (1 switches on core 0)
+[2021-08-12 15:32:55,695] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/nav.js
+[pid: 85231|app: 0|req: 4/14] 127.0.0.1 () {46 vars in 816 bytes} [Thu Aug 12 15:32:55 2021] GET /static/js/components/nav.js => generated 3189 bytes in 5 msecs (HTTP/1.1 404) 5 headers in 159 bytes (1 switches on core 1)
+[2021-08-12 15:32:55,706] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/ball.js
+[pid: 85230|app: 0|req: 7/15] 127.0.0.1 () {46 vars in 818 bytes} [Thu Aug 12 15:32:55 2021] GET /static/js/components/ball.js => generated 3192 bytes in 5 msecs (HTTP/1.1 404) 5 headers in 159 bytes (2 switches on core 1)
+[2021-08-12 15:32:55,716] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/foot.js
+[pid: 85231|app: 0|req: 5/16] 127.0.0.1 () {46 vars in 818 bytes} [Thu Aug 12 15:32:55 2021] GET /static/js/components/foot.js => generated 3192 bytes in 7 msecs (HTTP/1.1 404) 5 headers in 159 bytes (2 switches on core 0)
+超级大乐透
+['01', '12', '15', '26', '35', '10', '11']
+[pid: 85231|app: 0|req: 6/17] 127.0.0.1 () {50 vars in 943 bytes} [Thu Aug 12 15:33:38 2021] GET / => generated 3161 bytes in 16 msecs (HTTP/1.1 200) 5 headers in 167 bytes (1 switches on core 1)
+[2021-08-12 15:33:38,475] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/css/index.css
+[pid: 85231|app: 0|req: 7/18] 127.0.0.1 () {46 vars in 816 bytes} [Thu Aug 12 15:33:38 2021] GET /static/css/index.css => generated 3168 bytes in 11 msecs (HTTP/1.1 404) 5 headers in 159 bytes (1 switches on core 0)
+[2021-08-12 15:33:38,491] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/foot.js
+[pid: 85230|app: 0|req: 8/19] 127.0.0.1 () {46 vars in 818 bytes} [Thu Aug 12 15:33:38 2021] GET /static/js/components/foot.js => generated 3192 bytes in 11 msecs (HTTP/1.1 404) 5 headers in 159 bytes (1 switches on core 0)
+[2021-08-12 15:33:38,496] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/ball.js
+[pid: 85231|app: 0|req: 9/20] 127.0.0.1 () {46 vars in 818 bytes} [Thu Aug 12 15:33:38 2021] GET /static/js/components/ball.js => generated 3192 bytes in 17 msecs (HTTP/1.1 404) 5 headers in 159 bytes (1 switches on core 0)
+[2021-08-12 15:33:38,501] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/nav.js
+[pid: 85231|app: 0|req: 9/21] 127.0.0.1 () {46 vars in 816 bytes} [Thu Aug 12 15:33:38 2021] GET /static/js/components/nav.js => generated 3189 bytes in 21 msecs (HTTP/1.1 404) 5 headers in 159 bytes (1 switches on core 1)
+[2021-08-12 15:33:38,748] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/nav.js
+[pid: 85230|app: 0|req: 9/22] 127.0.0.1 () {46 vars in 816 bytes} [Thu Aug 12 15:33:38 2021] GET /static/js/components/nav.js => generated 3189 bytes in 5 msecs (HTTP/1.1 404) 5 headers in 159 bytes (1 switches on core 1)
+[2021-08-12 15:33:38,757] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/ball.js
+[pid: 85230|app: 0|req: 10/23] 127.0.0.1 () {46 vars in 818 bytes} [Thu Aug 12 15:33:38 2021] GET /static/js/components/ball.js => generated 3192 bytes in 5 msecs (HTTP/1.1 404) 5 headers in 159 bytes (2 switches on core 0)
+[2021-08-12 15:33:38,766] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/foot.js
+[pid: 85230|app: 0|req: 11/24] 127.0.0.1 () {46 vars in 818 bytes} [Thu Aug 12 15:33:38 2021] GET /static/js/components/foot.js => generated 3192 bytes in 5 msecs (HTTP/1.1 404) 5 headers in 159 bytes (1 switches on core 1)
+超级大乐透
+['01', '12', '15', '26', '35', '10', '11']
+[pid: 85231|app: 0|req: 10/25] 127.0.0.1 () {50 vars in 943 bytes} [Thu Aug 12 15:33:55 2021] GET / => generated 3161 bytes in 14 msecs (HTTP/1.1 200) 5 headers in 167 bytes (1 switches on core 0)
+[2021-08-12 15:33:55,888] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/css/index.css
+[pid: 85229|app: 0|req: 3/26] 127.0.0.1 () {46 vars in 816 bytes} [Thu Aug 12 15:33:55 2021] GET /static/css/index.css => generated 3168 bytes in 11 msecs (HTTP/1.1 404) 5 headers in 159 bytes (1 switches on core 1)
+[2021-08-12 15:33:55,920] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/nav.js
+[pid: 85228|app: 0|req: 3/27] 127.0.0.1 () {46 vars in 816 bytes} [Thu Aug 12 15:33:55 2021] GET /static/js/components/nav.js => generated 3189 bytes in 12 msecs (HTTP/1.1 404) 5 headers in 159 bytes (1 switches on core 1)
+[2021-08-12 15:33:55,928] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/ball.js
+[pid: 85231|app: 0|req: 12/28] 127.0.0.1 () {46 vars in 818 bytes} [Thu Aug 12 15:33:55 2021] GET /static/js/components/ball.js => generated 3192 bytes in 19 msecs (HTTP/1.1 404) 5 headers in 159 bytes (2 switches on core 1)
+[2021-08-12 15:33:55,933] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/foot.js
+[pid: 85231|app: 0|req: 12/29] 127.0.0.1 () {46 vars in 818 bytes} [Thu Aug 12 15:33:55 2021] GET /static/js/components/foot.js => generated 3192 bytes in 22 msecs (HTTP/1.1 404) 5 headers in 159 bytes (1 switches on core 0)
+[2021-08-12 15:33:56,179] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/nav.js
+[pid: 85230|app: 0|req: 12/30] 127.0.0.1 () {46 vars in 816 bytes} [Thu Aug 12 15:33:56 2021] GET /static/js/components/nav.js => generated 3189 bytes in 6 msecs (HTTP/1.1 404) 5 headers in 159 bytes (1 switches on core 0)
+[2021-08-12 15:33:56,189] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/ball.js
+[pid: 85231|app: 0|req: 13/31] 127.0.0.1 () {46 vars in 818 bytes} [Thu Aug 12 15:33:56 2021] GET /static/js/components/ball.js => generated 3192 bytes in 6 msecs (HTTP/1.1 404) 5 headers in 159 bytes (2 switches on core 1)
+[2021-08-12 15:33:56,201] [log.py:224] [log:log_response] [WARNING]- Not Found: /static/js/components/foot.js
+[pid: 85231|app: 0|req: 14/32] 127.0.0.1 () {46 vars in 818 bytes} [Thu Aug 12 15:33:56 2021] GET /static/js/components/foot.js => generated 3192 bytes in 5 msecs (HTTP/1.1 404) 5 headers in 159 bytes (2 switches on core 0)
