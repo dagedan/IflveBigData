@@ -17,7 +17,7 @@ services:
       - ./redis/redis.conf:/usr/local/etc/redis/redis.conf:rw
       - ./redis/data:/data:rw
     deploy:
-      replicas: 2
+      replicas: 1
       update_config:
         parallelism: 2
         delay: 10s
@@ -36,6 +36,7 @@ services:
       # 数据库还原目录 可将需要还原的sql文件放在这里
       - ./mysql/init:/docker-entrypoint-initdb.d
     environment:
+      - "MYSQL_ROOT_PASSWORD=iflve.com"
       - "MYSQL_DATABASE=iflve_bigdata"
       - "MYSQL_USER=dagedan"
       - "MYSQL_PASSWORD=iflve.comSs123456.."
