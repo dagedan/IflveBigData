@@ -105,7 +105,7 @@ DATABASES = {
         'PORT': 3306,
         'DATA_BASE': 'iflve_bigdata',
         'USER': 'dagedan',
-        'PASSWORD': 'iflve.com',
+        'PASSWORD': 'iflve.comSs123456..',
         'NAME': 'iflve_bigdata'
     }
 }
